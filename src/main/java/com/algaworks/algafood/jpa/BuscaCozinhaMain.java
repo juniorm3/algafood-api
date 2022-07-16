@@ -18,7 +18,7 @@ public class BuscaCozinhaMain {
 
 		Cozinha cozinha = cozinhaRepository.buscar(1L);
 
-		System.out.println(cozinha.getNome());
+		System.out.printf("%s - %f",cozinha.getNome());
 
 	}
 
