@@ -1,25 +1,28 @@
 package com.algaworks.algafood.jpa;
 
+import java.util.List;
+
 import com.algaworks.algafood.AlgafoodApiApplication;
-import com.algaworks.algafood.domain.model.Cozinha;
-import com.algaworks.algafood.domain.repository.CozinhaRepository;
+import com.algaworks.algafood.domain.model.Cidade;
+import com.algaworks.algafood.domain.repository.CidadeRepository;
 
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
-public class BuscaCozinhaMain {
+public class ConsultaCidadeMain {
 
 	public static void main(String[] args) {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
 				.web(WebApplicationType.NONE).run(args);
 
-		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
+		CidadeRepository cidadeRepository = applicationContext.getBean(CidadeRepository.class);
 
-		Cozinha cozinha = cozinhaRepository.buscar(1L);
+		List<Cidade> cidades = cidadeRepository.listar();
 
-		System.out.printf("%s - %f",cozinha.getNome());
-
+		for (Cidade cidade : cidades) {
+			System.out.printf("%s%n", cidade.getNome());
+		}
 	}
 
 }
